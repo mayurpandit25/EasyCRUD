@@ -13,7 +13,7 @@ spec:
       maxUnavailable: 0
   selector: 
     matchLabels: 
-      app: backned 
+      app: backend 
   template: 
     metadata: 
       labels: 
