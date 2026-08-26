@@ -3,7 +3,7 @@ kind: Deployment
 metadata: 
   name: frontend-deployment 
   labels: 
-    app: frontend 
+    app: frontend
 spec: 
   replicas: 2
   strategy:
@@ -17,14 +17,14 @@ spec:
   template: 
     metadata: 
       labels: 
-        app: frontend 
+        app: frontend
     spec: 
       containers: 
-        - name: frontend-container
-          image: 525382241025.dkr.ecr.us-west-2.amazonaws.com/frontend:23
+        - name: frontend-container 
+          image: 822920903800.dkr.ecr.us-west-2.amazonaws.com/frontend:latest
           ports: 
             - containerPort: 80
-
+          
           resources: 
             requests: 
               cpu: "100m"
@@ -32,4 +32,3 @@ spec:
             limits: 
               cpu: "200m"
               memory: "256Mi"
-          

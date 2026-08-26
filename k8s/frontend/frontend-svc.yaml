@@ -3,11 +3,11 @@ kind: Service
 metadata: 
   name: frontend-svc 
   labels: 
-    app: frontend 
+    app: frontend
 spec: 
-  type: ClusterIP 
+  type: ClusterIP
   selector: 
-    app: frontend 
+    app: frontend
   ports: 
     - port: 80
       targetPort: 80

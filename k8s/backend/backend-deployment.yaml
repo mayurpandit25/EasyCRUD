@@ -1,34 +1,34 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name: backend-deployment
+  name: backend-deployment 
   labels: 
     app: backend 
 spec: 
-  replicas: 10
+  replicas: 2
   strategy:
     type: RollingUpdate
-    rollingUpdate: 
+    rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
   selector: 
     matchLabels: 
-      app: backend 
+      app: backned 
   template: 
     metadata: 
       labels: 
         app: backend 
     spec: 
       containers: 
-      - name: backend-cont
-        image: 525382241025.dkr.ecr.us-west-2.amazonaws.com/backend:40
-        ports:
-          - containerPort: 8080
-        
-        resources:
-          requests: 
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "200m"
-            memory: "256Mi"
+        - name: backend-container 
+          image: 822920903800.dkr.ecr.us-west-2.amazonaws.com/backend:latest
+          ports: 
+            - containerPort: 8080 
+          
+          resources: 
+            requests: 
+              cpu: "100m"
+              memory: "128Mi"
+            limits: 
+              cpu: "200m"
+              memory: "256Mi"
