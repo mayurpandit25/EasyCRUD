@@ -1,0 +1,338 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+logs/
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Application specific
+application-local.properties
+application-dev.properties
+application-prod.properties
+application-test.properties
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Spring Boot specific
+spring.log
+application.log
+
+# H2 Database
+*.h2.db
+*.h2.db.trace
+
+# Liquibase
+dbchangelog.sql
+
+# Flyway
+flyway.sql
+
+# Test reports
+test-output/
+reports/
+coverage/
+
+# Performance monitoring
+*.hprof
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Kubernetes
+*.yaml.bak
+*.yml.bak
+
+# Local configuration
+config/local/
+config/dev/
+config/test/
+
+# SSL certificates
+*.p12
+*.pem
+*.key
+*.crt
+*.csr
+
+# JWT tokens
+jwt-secret.txt
+jwt-public.key
+jwt-private.key
+
+# API documentation
+swagger-ui/
+api-docs/
+
+# Monitoring
+prometheus.yml
+grafana/
+
+# Log aggregation
+logstash/
+elasticsearch/
+
+# Cache
+.cache/
+cache/
+
+# Profiling
+*.prof
+*.jfr
+
+# Memory dumps
+*.hprof
+*.dump
+
+# IDE specific
+.project
+.classpath
+.settings/
+.metadata/
+*.launch
+
+# Build tools
+ant/
+ant-build/
+build.xml
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Node.js (if using Node.js tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if using Python tools)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ruby (if using Ruby tools)
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+
+# Go (if using Go tools)
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Rust (if using Rust tools)
+/target/
+Cargo.lock
+
+# PHP (if using PHP tools)
+/vendor/
+composer.phar
+composer.lock
+
+# .NET (if using .NET tools)
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# Scala (if using Scala tools)
+*.class
+*.log
+.cache
+.history
+.repl_history
+project/
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Clojure (if using Clojure tools)
+.cpcache/
+.lein-*
+.nrepl-port
+.strepl-port
+*.jar
+*.class
+
+# Leiningen
+target/
+classes/
+checkouts/
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+
+# Boot
+.boot/
+
+# Profiles
+profiles.clj
+
+# Local configuration
+local.clj
+
+# Clojure REPL
+.nrepl-port
+.strepl-port
+
+# ClojureScript
+.cache/
+.parcel-cache/
+dist/
+build/
+
+# ClojureScript REPL
+.rebel_readline_history
+
+# ClojureScript DevTools
+.cljsbuild/
+
+# ClojureScript Karma
+karma.conf.js
+
+# ClojureScript Karma
+karma.conf.js
+
+# ClojureScript Karma
+karma.conf.js

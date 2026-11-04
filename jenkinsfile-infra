@@ -1,0 +1,39 @@
+pipeline {
+    agent {
+        label 'worker'
+    }
+
+    tools{
+        terraform 'tf'
+    }
+
+    environment{
+        MY_AWS_CRED = credentials('aws-cred')
+    }
+
+    stages{
+        stage('Checkout'){
+            steps{
+                git branch: 'main', url: 'https://github.com/mayurpandit25/EasyCRUD.git'
+            }
+        }
+
+        stage('Terraform - INIT'){
+            steps {
+                sh 'terraform init'
+            }
+        }
+
+        stage('Terraform - Validate'){
+            steps{
+                sh 'terraform validate'
+            }
+        }
+
+        stage('Terraform - Apply'){
+            steps {
+                sh 'terraform apply -auto-approve'
+            }
+        }
+    }
+}

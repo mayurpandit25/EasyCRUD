@@ -1,0 +1,373 @@
+# Project-wide .gitignore
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.h2.db
+*.h2.db.trace
+
+# SSL certificates and keys
+*.p12
+*.pem
+*.key
+*.crt
+*.csr
+jwt-secret.txt
+jwt-public.key
+jwt-private.key
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Kubernetes
+*.yaml.bak
+*.yml.bak
+
+# Documentation build
+docs/build/
+docs/_build/
+
+# Coverage reports
+coverage/
+*.lcov
+.nyc_output
+
+# Performance monitoring
+*.hprof
+*.prof
+*.jfr
+*.dump
+
+# Cache directories
+.cache/
+cache/
+.parcel-cache/
+.vite/
+
+# Node.js (if any tools use it)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Java (if any tools use it)
+*.class
+*.jar
+*.war
+*.ear
+target/
+build/
+.gradle/
+
+# Python (if any tools use it)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ruby (if any tools use it)
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+
+# Go (if any tools use it)
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Rust (if any tools use it)
+/target/
+Cargo.lock
+
+# PHP (if any tools use it)
+/vendor/
+composer.phar
+composer.lock
+
+# .NET (if any tools use it)
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# Application specific
+application-local.properties
+application-dev.properties
+application-prod.properties
+application-test.properties
+
+# Local configuration
+config/local/
+config/dev/
+config/test/
+
+# API documentation
+swagger-ui/
+api-docs/
+
+# Monitoring
+prometheus.yml
+grafana/
+
+# Log aggregation
+logstash/
+elasticsearch/
+
+# Test reports
+test-output/
+reports/
+
+# Build artifacts
+dist/
+build/
+*.tgz
+*.tar.gz
+*.zip
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE specific
+.project
+.classpath
+.settings/
+.metadata/
+*.launch
+
+# Build tools
+ant/
+ant-build/
+build.xml
+
+# Clojure (if any tools use it)
+.cpcache/
+.lein-*
+.nrepl-port
+.strepl-port
+*.jar
+*.class
+
+# Leiningen
+target/
+classes/
+checkouts/
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+
+# Boot
+.boot/
+
+# Profiles
+profiles.clj
+
+# Local configuration
+local.clj
+
+# Clojure REPL
+.nrepl-port
+.strepl-port
+
+# ClojureScript
+.cache/
+.parcel-cache/
+dist/
+build/
+
+# ClojureScript REPL
+.rebel_readline_history
+
+# ClojureScript DevTools
+.cljsbuild/
+
+# ClojureScript Karma
+karma.conf.js
+
+# Scala (if any tools use it)
+*.class
+*.log
+.cache
+.history
+.repl_history
+project/
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Netlify
+.netlify
+
+# Vercel
+.vercel
+
+# Turbo
+.turbo
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+/coverage
+/.nyc_output
+
+# Production
+/build
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+
+# Vite
+.vite
+
+# Next.js
+.next
+
+# Nuxt.js
+.nuxt
+
+# Gatsby
+.cache/
+public
+
+# Storybook
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local Netlify folder
+.netlify
+
+# Vite
+.vite
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+/coverage
+/.nyc_output
+
+# Production
+/build
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel
+
+# Turbo
+.turbo 

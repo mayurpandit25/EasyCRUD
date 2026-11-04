@@ -1,0 +1,167 @@
+pipeline {
+    agent {
+        label "worker"
+    }
+
+    tools{
+        maven 'maven'
+    }
+
+    environment{
+        MY_AWS_CRED = credentials('aws-cred')
+        ECR_REPO = '822920903800.dkr.ecr.us-west-2.amazonaws.com/backend'
+    }
+
+    stages{
+        stage('Checkout'){
+            steps{
+                git branch: 'main', credentialsId: 'github-cred', url: 'https://github.com/mayurpandit25/EasyCRUD.git'
+            }
+        }
+
+        stage('Build-Backend'){
+            steps{
+                dir('backend'){
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+            post{
+                success{
+                    archiveArtifacts artifacts: 'backend/target/*.jar', fingerprint: true
+                }
+            }
+        }
+
+        // stage('OWASP Dependency Check'){
+        //     steps{
+        //         dir('backend'){
+        //             withCredentials([
+        //                 string(
+        //                     credentialsId: 'nvd-api-key',
+        //                     variable: 'NVD_API_KEY'
+        //                 )
+        //             ]) {
+        //                 sh '''
+        //                     mvn org.owasp:dependency-check-maven:check \
+        //                     -DnvdApiKeyEnvironmentVariable=NVD_API_KEY
+        //                 '''
+        //             }
+        //         }
+        //     }
+        // }
+
+        stage('Artifacts to S3'){
+            steps{
+                sh 'aws s3 cp backend/target/*.jar s3://mayur.comm/Artifacts/'
+            }
+        }
+
+        stage('SonarQube Analysis'){
+            steps{
+               dir('backend'){
+                  withSonarQubeEnv('sonar'){
+                    sh 'mvn sonar:sonar'
+                  }
+               }
+            }
+        }
+
+        stage('Quality Gates'){
+            steps{
+                timeout(time: 5, unit: 'MINUTES'){
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
+        stage('Trivy Filesystem Scan'){
+            steps{
+                sh '''
+                   trivy fs --scanners vuln,secret --severity HIGH,CRITICAL --exit-code 0 .
+                '''
+            }
+        }
+
+        stage('Docker Build'){
+            steps{
+                dir('backend'){
+                    sh '''
+                        docker build -t backend:${BUILD_NUMBER} .
+                        docker images
+                    '''
+                }
+            }
+        }
+
+        stage('TRIVY - SCANNING'){
+            steps {
+                sh '''
+                    trivy image --cache-dir /var/lib/trivy --scanners vuln --severity HIGH,CRITICAL --skip-java-db-update --exit-code 0 backend:${BUILD_NUMBER}
+                '''
+            }
+        }
+
+        stage('Approval'){
+            steps{
+                timeout(time: 30, unit: 'MINUTES'){
+                    input message: 'Approve deployment to Kubernetes?', ok: 'Approve'
+                }
+            }
+        }
+
+        stage('Push Image to ECR'){
+            steps{
+                sh '''
+                    aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 822920903800.dkr.ecr.us-west-2.amazonaws.com
+                    docker tag backend:${BUILD_NUMBER} ${ECR_REPO}:${BUILD_NUMBER}
+                    docker push ${ECR_REPO}:${BUILD_NUMBER}
+                '''
+            }
+        }
+
+        stage('Image Update'){
+            steps{
+                sh '''
+                    sed -i "s|image: .*|image: ${ECR_REPO}:${BUILD_NUMBER}|" k8s/backend/backend-deployment.yaml
+                '''
+            }
+        }
+
+        stage('Push changes to GitHub'){
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: "github-cred",
+                        usernameVariable: "GIT_USERNAME",
+                        passwordVariable: "GIT_PASSWORD"
+                    )
+                ]) {
+                    
+                    sh '''
+                        git config  user.name "mayurpandit25"
+                        git config user.email "panditmayur888@gmail.com"
+
+                        git add k8s/backend/backend-deployment.yaml
+                        git commit -m "Update backend-deployment"
+                        git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/mayurpandit25/EasyCRUD.git HEAD:main
+                    '''
+                }
+            }
+        }
+
+        stage('Update Argocd'){
+            steps{
+                dir('argocd'){
+                    sh '''
+                        aws eks update-kubeconfig --name my-eks-cluster-mayur --region us-west-2
+                        kubectl apply -f backend-application.yaml
+                        kubectl get app -n argocd
+                        sleep 10
+                        kubectl get pods 
+                        kubectl get svc -o wide
+                    '''
+                }
+            }
+        }
+    }
+}
